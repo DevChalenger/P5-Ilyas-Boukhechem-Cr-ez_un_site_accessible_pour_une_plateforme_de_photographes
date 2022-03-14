@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="./styles/css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="./styles/css/style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="./styles/css/photographer.css" />
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -23,7 +31,7 @@
         </button>
       </div>
     </main>
-    <div id="contact_modal">
+    <section id="contact_modal">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
@@ -31,13 +39,34 @@
         </header>
         <form>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="firstName">Prénom</label>
+            <input id="firstName" />
+          </div>
+          <div>
+            <label for="name">Nom</label>
+            <input id="name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" />
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea id="message"></textarea>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
-    </div>
-    <script src="/scripts/utils/contactForm.js"></script>
+    </section>
+    <section id="select-section" class="select-section">
+      <span><srtong>Trier par</srtong></span>
+      <select></select>
+    </section>
+    <section id="media-section" class="media-section"></section>
+    <script src="./scripts/utils/getData.js"></script>
+    <script src="./scripts/factories/media.js"></script>
+    <script src="./scripts/pages/photographer.js"></script>
+
+    <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>

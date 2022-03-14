@@ -3,6 +3,10 @@ body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
 }
+$Primary-color: #901c1c;
+$Second-color: #d3573c;
+$Third-color: #525252;
+$Fourth-color: #fafafa;
 header {
   display: flex;
   flex-direction: row;
@@ -11,7 +15,7 @@ header {
   height: 90px;
 }
 h1 {
-  color: #901c1c;
+  color: $Primary-color;
   margin-right: 100px;
 }
 .logo {
@@ -32,7 +36,7 @@ h1 {
     flex-direction: column;
 
     h2 {
-      color: #d3573c;
+      color: $Second-color;
       font-size: 36px;
       margin: 0;
     }
@@ -44,7 +48,7 @@ h1 {
     }
     .citiesAndCountries {
       font-size: 1.1em;
-      color: #901c1c;
+      color: $Primary-color;
     }
     p {
       font-size: 0.7em;
@@ -52,6 +56,7 @@ h1 {
       font-weight: bold;
     }
     .prices {
+      color: $Third-color;
       font-weight: lighter;
     }
   }

@@ -5,7 +5,6 @@ function photographerFactory(data) {
 
   function getUserCardDOM() {
     const article = document.createElement("article");
-    const div = document.createElement("div");
     //Link//
     const link = document.createElement("a");
     link.setAttribute("href", "photographer.html?id=" + id);
@@ -28,7 +27,7 @@ function photographerFactory(data) {
     summary.classList.add("summary");
     //Prices Elements//
     const prices = document.createElement("p");
-    prices.textContent = price + " €";
+    prices.textContent = price + "€/jour";
     prices.classList.add("prices");
     //child Elements//
     article.appendChild(link);
