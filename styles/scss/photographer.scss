@@ -84,4 +84,10 @@ form {
 .select-section {
   margin: 3em 100px;
   margin-top: 1.5em;
+  select {
+    height: 50px;
+    option {
+      height: 50px;
+    }
+  }
 }
