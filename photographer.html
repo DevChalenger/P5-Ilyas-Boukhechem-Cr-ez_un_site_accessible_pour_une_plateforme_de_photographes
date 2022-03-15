@@ -59,17 +59,19 @@
       </div>
     </section>
     <section id="select-section" class="select-section">
-      <label for="select-list">Trier par</label>
-      <select id="select-list">
-        <option value="">choisisez votre option</option>
-        <option value="">Popularité</option>
-        <option value="">Date</option>
-        <option value="">Titre</option>
-      </select>
+      <p>Trier par</p>
+      <div class="select-dropdown" id="select-dropdown">
+        <div value="date" id="sort-by-date" class="sort-block">Date</div>
+        <div value="title" id="sort-by-title" class="sort-block">Titre</div>
+        <div value="popularity" id="sort-by-popularity" class="sort-block">
+          Popularité
+        </div>
+      </div>
     </section>
     <section id="media-section" class="media-section"></section>
     <script src="./scripts/utils/getData.js"></script>
     <script src="./scripts/factories/media.js"></script>
+    <script src="./scripts/utils/sort.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
 
     <script src="./scripts/utils/contactForm.js"></script>

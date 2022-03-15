@@ -1,5 +1,5 @@
 function mediadFactory(data) {
-  const { id, photographerId, title, image, video, likes, date, price } = data;
+  const { id, title, image, video, likes } = data;
   const picture = `assets/photographers/media/${image}`;
   const record = `assets/photographers/media/${video}`;
   function getMediaDOM() {
@@ -17,14 +17,18 @@ function mediadFactory(data) {
     titles.style.overflowWrap = "anywhere";
     /////
     const likeBlock = document.createElement("div");
+    const likesCounter = document.createElement("span");
+    const likesIcon = document.createElement("i");
+    likesCounter.textContent = likes;
+    likesIcon.classList.add("fa-solid", "fa-heart", "heart-icon");
     likeBlock.style.display = "flex";
     likeBlock.style.alignItems = "center";
     likeBlock.style.justifyContent = "space-between";
     likeBlock.style.fontSize = "1.2em";
-    likeBlock.innerHTML = `
-    <span>${likes}</span> 
-    <i class="fa-solid fa-heart heart-icon"></i>
-    `;
+    likeBlock.appendChild(likesCounter);
+
+    likeBlock.appendChild(likesIcon);
+
     /////
     if (video != undefined) {
       const videos = document.createElement("video");

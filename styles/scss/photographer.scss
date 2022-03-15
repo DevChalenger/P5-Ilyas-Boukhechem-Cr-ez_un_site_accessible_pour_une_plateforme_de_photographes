@@ -79,15 +79,15 @@ form {
   justify-content: space-between;
   .heart-icon {
     margin-left: 5px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 .select-section {
   margin: 3em 100px;
   margin-top: 1.5em;
-  select {
-    height: 50px;
-    option {
-      height: 50px;
-    }
-  }
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
 }
