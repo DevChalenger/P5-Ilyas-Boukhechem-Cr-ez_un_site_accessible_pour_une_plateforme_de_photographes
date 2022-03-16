@@ -52,19 +52,27 @@
           </div>
           <div>
             <label for="message">Votre message</label>
-            <textarea id="message"></textarea>
+            <input id="message" />
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
     </section>
     <section id="select-section" class="select-section">
-      <p>Trier par</p>
+      <p class="sort-text">Trier par</p>
       <div class="select-dropdown" id="select-dropdown">
-        <div value="date" id="sort-by-date" class="sort-block">Date</div>
-        <div value="title" id="sort-by-title" class="sort-block">Titre</div>
-        <div value="popularity" id="sort-by-popularity" class="sort-block">
+        <div value="popularity" id="sort-by-popularity" class="sort-block sort">
           Popularité
+        </div>
+        <div class="separate-block"></div>
+        <div value="date" id="sort-by-date" class="sort-block sort">Date</div>
+        <div class="separate-block"></div>
+        <div value="title" id="sort-by-title" class="sort-block sort">
+          Titre
+        </div>
+        <div id="toggle-list" class="toggle-list">
+          <i class="fa-solid fa-angle-up" id="toggle-open"></i>
+          <i class="fa-solid fa-angle-down" id="toggle-close"></i>
         </div>
       </div>
     </section>
@@ -73,7 +81,6 @@
     <script src="./scripts/factories/media.js"></script>
     <script src="./scripts/utils/sort.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
-
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>

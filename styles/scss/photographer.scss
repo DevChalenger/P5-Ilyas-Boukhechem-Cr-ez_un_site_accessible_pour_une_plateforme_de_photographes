@@ -85,9 +85,54 @@ form {
   }
 }
 .select-section {
-  margin: 3em 100px;
-  margin-top: 1.5em;
+  margin: 2em 100px;
+  margin-top: 1em;
   display: flex;
-  width: 200px;
+  width: 225px;
   justify-content: space-between;
+  .sort-text {
+    font-weight: bold;
+  }
+  .select-dropdown {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.3em;
+    background-color: $Primary-color;
+    color: $Fourth-color;
+    overflow: hidden;
+    position: absolute;
+    left: 200px;
+    .separate-block {
+      width: 120%;
+      margin: auto;
+      height: 1px;
+      background-color: $Fourth-color;
+    }
+    .sort-block {
+      padding: 10px;
+      padding-right: 3em;
+      z-index: 1;
+      &:hover {
+        cursor: pointer;
+        text-shadow: 0px 1px 2px $Fourth-color;
+      }
+    }
+
+    #sort-by-date,
+    #sort-by-title {
+      display: none;
+    }
+    .toggle-list {
+      position: absolute;
+      right: 0px;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      margin: 0.6em;
+      &:hover {
+        cursor: pointer;
+        text-shadow: 0px 1px 2px $Fourth-color;
+      }
+    }
+  }
 }

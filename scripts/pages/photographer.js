@@ -30,6 +30,26 @@ async function getMediasById() {
       );
       displayPhotorgapher(mediaById);
     });
+    // select button
+    const toggleButton = document.getElementById("toggle-list");
+    const selectDate = document.getElementById("sort-by-date");
+    const selectTitle = document.getElementById("sort-by-title");
+    const openButton = document.getElementById("toggle-open");
+    const closeButton = document.getElementById("toggle-close");
+    closeButton.style.display = "none";
+    toggleButton.addEventListener("click", () => {
+      if (openButton.style.display != "none") {
+        selectTitle.style.display = "block";
+        selectDate.style.display = "block";
+        openButton.style.display = "none";
+        closeButton.style.display = "block";
+      } else {
+        selectTitle.style.display = "none";
+        selectDate.style.display = "none";
+        openButton.style.display = "block";
+        closeButton.style.display = "none";
+      }
+    });
   }
   sortCategories();
   return { medias: [...mediaById] };
