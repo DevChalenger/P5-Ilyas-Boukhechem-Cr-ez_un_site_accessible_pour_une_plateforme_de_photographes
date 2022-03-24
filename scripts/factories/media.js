@@ -1,5 +1,5 @@
 function mediadFactory(data) {
-  const { id, title, image, video, likes } = data;
+  const { title, image, video, likes } = data;
   const picture = `assets/photographers/media/${image}`;
   const record = `assets/photographers/media/${video}`;
   function getMediaDOM() {
@@ -7,18 +7,29 @@ function mediadFactory(data) {
     article.style.width = "350px";
     const divText = document.createElement("div");
     divText.style.color = "#901c1c";
+
     divText.style.display = "flex";
     divText.style.alignItems = "center";
     divText.style.justifyContent = "space-between";
     /////
     const titles = document.createElement("h2");
-    titles.classList = "title-media";
-    titles.textContent = title;
-    titles.style.overflowWrap = "anywhere";
+    const a = document.createElement("a");
+    a.classList = "title-media";
+    a.textContent = title;
+    a.setAttribute("href", "#");
+    a.addEventListener("click", (event) => {
+      event.preventDefault();
+      displayLightbox();
+    });
+    a.style.overflowWrap = "anywhere";
+    titles.appendChild(a);
+
     /////
-    const likeBlock = document.createElement("div");
+    const likeBlock = document.createElement("a");
     const likesCounter = document.createElement("span");
     const likesIcon = document.createElement("i");
+
+    likeBlock.setAttribute("href", "#");
     likesCounter.textContent = likes;
     likesIcon.classList.add("fa-solid", "fa-heart", "heart-icon");
     likeBlock.style.display = "flex";
@@ -31,32 +42,41 @@ function mediadFactory(data) {
 
     /////
     if (video != undefined) {
+      const blockVideo = document.createElement("a");
       const videos = document.createElement("video");
-      const source = document.createElement("source");
-      source.setAttribute("src", record);
-      videos.setAttribute("controls", "");
+      blockVideo.setAttribute("href", "#");
+      blockVideo.classList.add("lightbox-link");
+      videos.classList.add("current-picture");
+      videos.setAttribute("src", record);
       videos.style.width = "350px";
       videos.style.height = "300px";
       videos.style.objectFit = "cover";
       videos.style.borderRadius = "0.3em";
-      article.appendChild(videos);
-      videos.appendChild(source);
+      videos.style.cursor = "pointer";
+      article.appendChild(blockVideo);
+      blockVideo.appendChild(videos);
     }
     /////
     if (image != undefined) {
+      const blockImages = document.createElement("a");
       const images = document.createElement("img");
+      blockImages.setAttribute("href", "#");
+      blockImages.classList.add("lightbox-link");
       images.setAttribute("src", picture);
+      images.classList.add("current-picture");
       images.style.width = "350px";
       images.style.height = "300px";
       images.style.objectFit = "cover";
       images.style.borderRadius = "0.3em";
-      article.appendChild(images);
+      images.style.cursor = "pointer";
+      article.appendChild(blockImages);
+      blockImages.appendChild(images);
     }
-
     article.appendChild(divText);
     divText.appendChild(titles);
     divText.appendChild(likeBlock);
+
     return article;
   }
-  return { image, id, getMediaDOM };
+  return { getMediaDOM };
 }
