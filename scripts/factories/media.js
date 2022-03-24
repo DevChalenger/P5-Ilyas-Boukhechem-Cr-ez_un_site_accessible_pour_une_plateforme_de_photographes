@@ -47,6 +47,7 @@ function mediadFactory(data) {
       blockVideo.setAttribute("href", "#");
       blockVideo.classList.add("lightbox-link");
       videos.classList.add("current-picture");
+      /*  videos.setAttribute("data-id", 0); */
       videos.setAttribute("src", record);
       videos.style.width = "350px";
       videos.style.height = "300px";
@@ -64,6 +65,7 @@ function mediadFactory(data) {
       blockImages.classList.add("lightbox-link");
       images.setAttribute("src", picture);
       images.classList.add("current-picture");
+      /* images.setAttribute("data-id", 0); */
       images.style.width = "350px";
       images.style.height = "300px";
       images.style.objectFit = "cover";

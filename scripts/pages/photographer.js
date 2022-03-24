@@ -17,7 +17,8 @@ async function getMediasById() {
 
 async function displayPhotorgapher(medias) {
   const mediaSection = document.querySelector("#media-section");
-  const lightboxContainer = document.getElementById("lightbox-section");
+  const lightboxContainer = document.getElementById("picture-container");
+  sortCategories(medias);
   medias.forEach((media) => {
     ////
     const mediaModel = mediadFactory(media);
@@ -32,7 +33,7 @@ async function displayPhotorgapher(medias) {
 async function initMedia() {
   // Récupère les datas des photographes
   const { medias } = await getMediasById();
-  sortCategories(medias);
+
   displayPhotorgapher(medias);
 }
 
