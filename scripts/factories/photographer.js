@@ -8,6 +8,7 @@ function photographerFactory(data) {
     //Link//
     const link = document.createElement("a");
     link.setAttribute("href", "photographer.html?id=" + id);
+    link.setAttribute("aria-label", `Link to ${name} personal page`);
     //Avatar Elements//
     const avatar = document.createElement("img");
     avatar.setAttribute("src", picture);
