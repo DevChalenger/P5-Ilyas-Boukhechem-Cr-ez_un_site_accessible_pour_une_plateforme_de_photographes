@@ -4,10 +4,10 @@ async function getPhotographers() {
   // Autre solution pour récupérer les données dans le json
   // Seulement sur un serveur pas possible en local car le navigateur autorise que les serveurs http ou https
 
-  fetch("data/photographers.json").then((response) =>
-    response.photographerData.json()
+  /*  fetch("data/photographers.json").then((response) =>
+    console.log(response.photographerData.json())
   );
-
+ */
   // et bien retourner le tableau photographers seulement une fois
 
   return {

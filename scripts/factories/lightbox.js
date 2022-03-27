@@ -10,6 +10,7 @@ function lightboxFactory(data) {
     const article = document.createElement("article");
     article.classList.add("lightbox-container");
     const titles = document.createElement("h2");
+    titles.textContent = title;
     const linkMedia = document.querySelectorAll(".lightbox-link");
     const picture = document.createElement("img");
     picture.classList.add("media-lightbox");
@@ -20,10 +21,12 @@ function lightboxFactory(data) {
       if (video != undefined) {
         videos.setAttribute("src", records);
         article.appendChild(videos);
+        article.appendChild(titles);
       }
       if (image != undefined) {
         picture.setAttribute("src", pictures);
         article.appendChild(picture);
+        article.appendChild(titles);
       }
     }
     displayMedia();
@@ -69,12 +72,15 @@ function lightboxFactory(data) {
 
         function previousPicture(event) {
           event.preventDefault();
-
+          getAllArticle[i].classList.remove("displayed-block");
+          if (i != getDataLightbox.dataset.id) {
+            getAllArticle.forEach((select) => {
+              select.classList.remove("displayed-block");
+            });
+          }
           if (i < 1) {
-            getAllArticle[i].classList.remove("displayed-block");
             i = 0;
           } else {
-            getAllArticle[i].classList.remove("displayed-block");
             i--;
           }
           console.log(i);
@@ -84,7 +90,11 @@ function lightboxFactory(data) {
 
         function nextPicture(event) {
           event.preventDefault();
-
+          if (i != getDataLightbox.dataset.id) {
+            getAllArticle.forEach((select) => {
+              select.classList.remove("displayed-block");
+            });
+          }
           getAllArticle[i].classList.remove("displayed-block");
 
           if (i >= linkMedia.length - 1) {
@@ -97,7 +107,7 @@ function lightboxFactory(data) {
 
           displayMedia();
         }
-        let getCloseLightbox = document.getElementById("close-lightbox");
+        const getCloseLightbox = document.getElementById("close-lightbox");
         getCloseLightbox.addEventListener("click", closeLightbox);
         previousButton.addEventListener("click", previousPicture);
         nextButton.addEventListener("click", nextPicture);
