@@ -8,10 +8,10 @@ $Second-color: #d3573c;
 $Third-color: #525252;
 $Fourth-color: #fafafa;
 a {
+  display: block;
   text-decoration: none;
   color: $Primary-color;
   padding: 0;
-  display: block;
 }
 header {
   display: flex;
@@ -32,6 +32,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 70px;
+  margin-bottom: 1em;
   grid-auto-flow: row dense;
   margin-top: 100px;
   article {

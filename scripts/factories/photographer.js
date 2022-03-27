@@ -9,11 +9,17 @@ function photographerFactory(data) {
     const link = document.createElement("a");
     link.setAttribute("href", "photographer.html?id=" + id);
     link.setAttribute("aria-label", `Link to ${name} personal page`);
+    const blockLink = document.createElement("div");
+    blockLink.style.display = "flex";
+    blockLink.style.flexDirection = "column";
+    blockLink.style.justifyContent = "center";
+    blockLink.style.alignItems = "center";
     //Avatar Elements//
     const avatar = document.createElement("img");
     avatar.setAttribute("src", picture);
     avatar.setAttribute("alt", name + " avatar");
     avatar.classList.add("avatar");
+
     //Names Elements//
     const names = document.createElement("h2");
     names.textContent = name;
@@ -32,8 +38,9 @@ function photographerFactory(data) {
     prices.classList.add("prices");
     //child Elements//
     article.appendChild(link);
-    link.appendChild(avatar);
-    article.appendChild(names);
+    link.appendChild(blockLink);
+    blockLink.appendChild(avatar);
+    blockLink.appendChild(names);
     article.appendChild(citiesAndCountrie);
     article.appendChild(summary);
     article.appendChild(prices);

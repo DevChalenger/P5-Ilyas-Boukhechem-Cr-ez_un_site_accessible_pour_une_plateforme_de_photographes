@@ -28,7 +28,6 @@ function mediadFactory(data) {
     const likeBlock = document.createElement("a");
     const likesCounter = document.createElement("span");
     const likesIcon = document.createElement("i");
-
     likeBlock.setAttribute("href", "#");
     likesCounter.textContent = likes;
     likesIcon.classList.add("fa-solid", "fa-heart", "heart-icon");
@@ -39,7 +38,6 @@ function mediadFactory(data) {
     likeBlock.appendChild(likesCounter);
 
     likeBlock.appendChild(likesIcon);
-
     /////
     if (video != undefined) {
       const blockVideo = document.createElement("a");
@@ -47,7 +45,7 @@ function mediadFactory(data) {
       blockVideo.setAttribute("href", "#");
       blockVideo.classList.add("lightbox-link");
       videos.classList.add("current-picture");
-      /*  videos.setAttribute("data-id", 0); */
+
       videos.setAttribute("src", record);
       videos.style.width = "350px";
       videos.style.height = "300px";
@@ -74,6 +72,7 @@ function mediadFactory(data) {
       article.appendChild(blockImages);
       blockImages.appendChild(images);
     }
+
     article.appendChild(divText);
     divText.appendChild(titles);
     divText.appendChild(likeBlock);
