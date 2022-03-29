@@ -20,13 +20,14 @@ header {
   align-items: center;
   height: 90px;
 }
-h1 {
-  color: $Primary-color;
-  margin-right: 100px;
-}
+
 .logo {
   height: 50px;
   margin-left: 100px;
+}
+h1 {
+  color: $Primary-color;
+  margin-right: 100px;
 }
 .photographer_section {
   display: grid;
@@ -35,6 +36,7 @@ h1 {
   margin-bottom: 1em;
   grid-auto-flow: row dense;
   margin-top: 100px;
+
   article {
     justify-self: center;
     display: flex;

@@ -4,7 +4,7 @@ function sortCategories(sort) {
   const byDate = document.getElementById("sort-by-date");
   const getAllLightbox = document.getElementById("picture-container");
   // select button
-  const toggleButton = document.getElementById("toggle-list");
+
   const selectDate = document.getElementById("sort-by-date");
   const selectTitle = document.getElementById("sort-by-title");
   const openButton = document.getElementById("toggle-open");
@@ -16,17 +16,29 @@ function sortCategories(sort) {
     document.querySelector(".media-section").innerHTML = "";
     getAllLightbox.innerHTML = "";
     sort.sort((a, b) => a.likes - b.likes);
-    closeButton.style.display = "block";
+
     sort.reverse();
+
     displayPhotorgapher(sort);
+    closeButton.style.display = "block";
+    if (openButton.style.display != "none") {
+      closeButton.style.display = "none";
+    } else {
+      closeButton.style.display = "block";
+    }
   });
   // sort by title
   byTitle.addEventListener("click", () => {
     document.querySelector(".media-section").innerHTML = "";
     getAllLightbox.innerHTML = "";
     sort.sort((a, b) => a.title.localeCompare(b.title));
-    closeButton.style.display = "block";
     displayPhotorgapher(sort);
+    closeButton.style.display = "block";
+    if (openButton.style.display != "none") {
+      closeButton.style.display = "none";
+    } else {
+      closeButton.style.display = "block";
+    }
   });
   // sort by date
   byDate.addEventListener("click", () => {
@@ -35,26 +47,30 @@ function sortCategories(sort) {
     sort.sort(
       (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf()
     );
-    closeButton.style.display = "block";
+
     displayPhotorgapher(sort);
+    if (openButton.style.display != "none") {
+      closeButton.style.display = "none";
+    } else {
+      closeButton.style.display = "block";
+    }
   });
 
-  toggleButton.addEventListener("click", () => {
-    if (openButton.style.display === "block") {
-      console.log(this);
-      selectTitle.style.display = "block";
-      selectDate.style.display = "block";
-      openButton.style.display = "none";
-      closeButton.style.display = "block";
-      separateBlock[0].style.display = "block";
-      separateBlock[1].style.display = "block";
-    } else {
-      selectTitle.style.display = "none";
-      selectDate.style.display = "none";
-      openButton.style.display = "block";
-      closeButton.style.display = "none";
-      separateBlock[0].style.display = "none";
-      separateBlock[1].style.display = "none";
-    }
+  closeButton.style.display = "none";
+  openButton.addEventListener("click", () => {
+    selectTitle.style.display = "block";
+    selectDate.style.display = "block";
+    openButton.style.display = "none";
+    closeButton.style.display = "block";
+    separateBlock[0].style.display = "block";
+    separateBlock[1].style.display = "block";
+  });
+  closeButton.addEventListener("click", () => {
+    selectTitle.style.display = "none";
+    selectDate.style.display = "none";
+    openButton.style.display = "block";
+    closeButton.style.display = "none";
+    separateBlock[0].style.display = "none";
+    separateBlock[1].style.display = "none";
   });
 }

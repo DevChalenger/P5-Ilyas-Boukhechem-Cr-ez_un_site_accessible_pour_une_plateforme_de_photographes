@@ -1,16 +1,14 @@
 async function getMediasById() {
   const media = getDataMedia();
   const photographers = getDataPhotographer();
-
   let urlChecking = new URLSearchParams(window.location.search);
   const getId = urlChecking.get("id");
   const mediaById = media.filter((data) => data.photographerId == getId);
   const photographerById = photographers.filter((data) => {
     if (data.id == getId) {
-      return data;
+      photographerContactFactory(data);
     }
   });
-  console.log(photographerById);
 
   return { medias: [...mediaById] };
 }
@@ -18,7 +16,9 @@ async function getMediasById() {
 async function displayPhotorgapher(medias) {
   const mediaSection = document.querySelector("#media-section");
   const lightboxContainer = document.getElementById("picture-container");
+
   sortCategories(medias);
+
   medias.forEach((media) => {
     ////
     const mediaModel = mediadFactory(media);

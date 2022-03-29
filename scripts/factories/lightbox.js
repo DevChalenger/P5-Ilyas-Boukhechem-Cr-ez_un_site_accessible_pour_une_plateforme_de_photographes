@@ -4,6 +4,7 @@ function lightboxFactory(data) {
   const records = `assets/photographers/media/${video}`;
   const previousButton = document.getElementById("btn-previous");
   const nextButton = document.getElementById("btn-next");
+
   function getLightboxDOM() {
     const article = document.createElement("article");
     article.classList.add("lightbox-container");
@@ -33,26 +34,20 @@ function lightboxFactory(data) {
       const element = getAllLinkPicture[i];
       element.setAttribute("data-id", i);
     }
-
     for (let i = 0; i < linkMedia.length; i++) {
       linkMedia[i].addEventListener("click", (event) => {
         event.preventDefault();
         const main = document.getElementById("main");
         const lightbox = document.getElementById("lightbox-section");
-
         let selected = linkMedia[i].querySelector(".current-picture");
-        const getDataLightbox = document.querySelector(".current-picture");
+        const getDataLightbox = document.querySelectorAll(".current-picture");
         let getAllArticle = document.querySelectorAll(".lightbox-container");
         function closeLightbox() {
-          i = getDataLightbox.dataset.id;
+          i = selected.dataset.id;
           getAllArticle.forEach((article) => {
             article.classList.remove("displayed-block");
           });
-          let getSelected = document.querySelectorAll(".selected");
-          getSelected.forEach((selected) => {
-            selected.classList.remove("selected");
-          });
-
+          console.log(i);
           lightbox.style.display = "none";
           main.ariaHidden = "false";
           main.style.display = "block";
@@ -64,17 +59,18 @@ function lightboxFactory(data) {
         } else {
           article.classList.remove("displayed-block");
         }
-
         function displayLightbox() {
           lightbox.style.display = "block";
           main.ariaHidden = "true";
           main.style.display = "none";
+
+          displayMedia();
         }
         displayLightbox();
         function previousPicture(event) {
           event.preventDefault();
           getAllArticle[i].classList.remove("displayed-block");
-          if (i != getDataLightbox.dataset.id) {
+          if (i != getDataLightbox[i].dataset.id) {
             getAllArticle.forEach((select) => {
               select.classList.remove("displayed-block");
             });
@@ -88,25 +84,23 @@ function lightboxFactory(data) {
           getAllArticle[i].classList.add("displayed-block");
           displayMedia();
         }
-
         function nextPicture(event) {
           event.preventDefault();
+          getAllArticle[i].classList.remove("displayed-block");
           getAllArticle.forEach((element) => {
             element.classList.remove("displayed-block");
           });
-          if (i != getDataLightbox.dataset.id) {
+          if (i != getDataLightbox[i].dataset.id) {
             getAllArticle.forEach((select) => {
               select.classList.remove("displayed-block");
             });
           }
-
-          if (i >= linkMedia.length - 1) {
-            i = linkMedia.length - 1;
+          if (i >= getDataLightbox.length - 1) {
+            i = getDataLightbox.length - 1;
           } else {
             i++;
           }
           getAllArticle[i].classList.add("displayed-block");
-          console.log(i);
           displayMedia();
         }
         const getCloseLightbox = document.getElementById("close-lightbox");
@@ -115,7 +109,6 @@ function lightboxFactory(data) {
         nextButton.addEventListener("click", nextPicture);
       });
     }
-
     return article;
   }
   return { getLightboxDOM };

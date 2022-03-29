@@ -26,17 +26,13 @@
           <img src="assets/images/logo.png" class="logo"
         /></a>
       </header>
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-      </div>
+      <section class="photograph-header" id="contact-section"></section>
 
       <section id="contact_modal">
         <div class="block-modal">
           <div class="modal">
             <header>
-              <h2>Contactez-moi</h2>
+              <h2>Contactez-moi <span id="contact-name"></span></h2>
               <img src="assets/icons/close.svg" onclick="closeModal()" />
             </header>
             <form>
@@ -57,7 +53,12 @@
                 <input id="message" class="message-input" />
               </div>
               <div>
-                <button class="contact_button">Envoyer</button>
+                <button
+                  class="contact_button"
+                  onclick="(event.preventDefault())"
+                >
+                  Envoyer
+                </button>
               </div>
             </form>
           </div>
@@ -106,7 +107,7 @@
     <script src="./scripts/factories/lightbox.js"></script>
     <script src="./scripts/utils/Lightbox.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
-
+    <script src="./scripts/factories/photographer-contact-section.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
   </body>
 </html>
