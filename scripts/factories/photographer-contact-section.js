@@ -21,6 +21,9 @@ function photographerContactFactory(data) {
     button.textContent = "Contactez-moi";
     button.addEventListener("click", displayModal);
     ////
+    const salary = document.getElementById("salary-content");
+    salary.innerHTML = `${price} € / jour`;
+    ////
     const avatar = document.createElement("img");
     avatar.setAttribute("src", picture);
     avatar.setAttribute("alt", `${name} avatar`);

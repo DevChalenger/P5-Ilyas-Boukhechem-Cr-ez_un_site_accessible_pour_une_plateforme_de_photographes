@@ -29,6 +29,7 @@ async function displayPhotorgapher(medias) {
     const lightboxCardDOM = lightboxModel.getLightboxDOM();
     lightboxContainer.appendChild(lightboxCardDOM);
   });
+  totalLikes();
 }
 async function initMedia() {
   // Récupère les datas des photographes

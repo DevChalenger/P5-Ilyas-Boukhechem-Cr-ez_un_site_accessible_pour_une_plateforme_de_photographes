@@ -42,17 +42,24 @@ function lightboxFactory(data) {
         let selected = linkMedia[i].querySelector(".current-picture");
         const getDataLightbox = document.querySelectorAll(".current-picture");
         let getAllArticle = document.querySelectorAll(".lightbox-container");
+        function keyPress(e) {
+          if (e.keyCode === 37) {
+            previousPicture();
+          } else if (e.keyCode === 39) {
+            nextPicture();
+          }
+        }
         function closeLightbox() {
           i = selected.dataset.id;
           getAllArticle.forEach((article) => {
             article.classList.remove("displayed-block");
           });
-          console.log(i);
           lightbox.style.display = "none";
           main.ariaHidden = "false";
           main.style.display = "block";
           previousButton.removeEventListener("click", previousPicture);
           nextButton.removeEventListener("click", nextPicture);
+          window.removeEventListener("keydown", keyPress);
         }
         if ((getAllArticle[i] = selected)) {
           getAllArticle[i].classList.add("displayed-block");
@@ -67,8 +74,7 @@ function lightboxFactory(data) {
           displayMedia();
         }
         displayLightbox();
-        function previousPicture(event) {
-          event.preventDefault();
+        function previousPicture() {
           getAllArticle[i].classList.remove("displayed-block");
           if (i != getDataLightbox[i].dataset.id) {
             getAllArticle.forEach((select) => {
@@ -84,8 +90,7 @@ function lightboxFactory(data) {
           getAllArticle[i].classList.add("displayed-block");
           displayMedia();
         }
-        function nextPicture(event) {
-          event.preventDefault();
+        function nextPicture() {
           getAllArticle[i].classList.remove("displayed-block");
           getAllArticle.forEach((element) => {
             element.classList.remove("displayed-block");
@@ -104,6 +109,8 @@ function lightboxFactory(data) {
           displayMedia();
         }
         const getCloseLightbox = document.getElementById("close-lightbox");
+
+        window.addEventListener("keydown", keyPress);
         getCloseLightbox.addEventListener("click", closeLightbox);
         previousButton.addEventListener("click", previousPicture);
         nextButton.addEventListener("click", nextPicture);

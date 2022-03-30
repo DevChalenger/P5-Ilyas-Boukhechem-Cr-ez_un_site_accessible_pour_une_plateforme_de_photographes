@@ -25,12 +25,15 @@ function mediadFactory(data) {
     titles.appendChild(a);
 
     /////
-    const likeBlock = document.createElement("a");
+    const likeBlock = document.createElement("button");
     const likesCounter = document.createElement("span");
     const likesIcon = document.createElement("i");
     likeBlock.setAttribute("href", "#");
     likesCounter.textContent = likes;
+    likesCounter.classList.add("numbers-likes");
+
     likesIcon.classList.add("fa-solid", "fa-heart", "heart-icon");
+    likesIcon.setAttribute("value", likes);
     likeBlock.style.display = "flex";
     likeBlock.style.alignItems = "center";
     likeBlock.style.justifyContent = "space-between";
@@ -45,7 +48,6 @@ function mediadFactory(data) {
       blockVideo.setAttribute("href", "#");
       blockVideo.classList.add("lightbox-link");
       videos.classList.add("current-picture");
-
       videos.setAttribute("src", record);
       videos.style.width = "350px";
       videos.style.height = "300px";
