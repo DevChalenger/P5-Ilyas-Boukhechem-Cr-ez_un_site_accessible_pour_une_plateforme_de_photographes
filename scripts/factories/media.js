@@ -30,7 +30,7 @@ function mediadFactory(data) {
     const likeButton = document.createElement("button");
     const likesIcon = document.createElement("i");
     likeButton.classList.add("button-like");
-
+    likeButton.ariaLabel = `button like for '${title}' image`;
     likesCounter.textContent = likes;
     likesCounter.classList.add("numbers-likes");
 
@@ -53,6 +53,7 @@ function mediadFactory(data) {
       blockVideo.classList.add("lightbox-link");
       videos.classList.add("current-picture");
       videos.setAttribute("src", record);
+      videos.ariaLabel = title + " video";
       videos.style.width = "350px";
       videos.style.height = "300px";
       videos.style.objectFit = "cover";
@@ -68,7 +69,7 @@ function mediadFactory(data) {
       blockImages.setAttribute("href", "#");
       blockImages.classList.add("lightbox-link");
       images.setAttribute("src", picture);
-      images.setAttribute("alt", title + " picture");
+      images.setAttribute("alt", title + " image");
       images.classList.add("current-picture");
       /* images.setAttribute("data-id", 0); */
       images.style.width = "350px";
