@@ -12,7 +12,8 @@ function sortCategories(sort) {
   const separateBlock = document.querySelectorAll(".separate-block");
 
   // sort by popularity
-  byPopularity.addEventListener("click", () => {
+  byPopularity.addEventListener("click", (event) => {
+    event.preventDefault();
     document.querySelector(".media-section").innerHTML = "";
     getAllLightbox.innerHTML = "";
     sort.sort((a, b) => a.likes - b.likes);
@@ -28,7 +29,8 @@ function sortCategories(sort) {
     }
   });
   // sort by title
-  byTitle.addEventListener("click", () => {
+  byTitle.addEventListener("click", (event) => {
+    event.preventDefault();
     document.querySelector(".media-section").innerHTML = "";
     getAllLightbox.innerHTML = "";
     sort.sort((a, b) => a.title.localeCompare(b.title));
@@ -41,7 +43,8 @@ function sortCategories(sort) {
     }
   });
   // sort by date
-  byDate.addEventListener("click", () => {
+  byDate.addEventListener("click", (event) => {
+    event.preventDefault();
     document.querySelector(".media-section").innerHTML = "";
     getAllLightbox.innerHTML = "";
     sort.sort(
@@ -61,7 +64,9 @@ function sortCategories(sort) {
     selectTitle.style.display = "block";
     selectDate.style.display = "block";
     openButton.style.display = "none";
+    openButton.ariaPressed = "true";
     closeButton.style.display = "block";
+    closeButton.ariaPressed = "false";
     separateBlock[0].style.display = "block";
     separateBlock[1].style.display = "block";
   });
@@ -69,7 +74,9 @@ function sortCategories(sort) {
     selectTitle.style.display = "none";
     selectDate.style.display = "none";
     openButton.style.display = "block";
+    openButton.ariaPressed = "false";
     closeButton.style.display = "none";
+    closeButton.ariaPressed = "true";
     separateBlock[0].style.display = "none";
     separateBlock[1].style.display = "none";
   });

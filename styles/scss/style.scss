@@ -29,6 +29,12 @@ h1 {
   color: $Primary-color;
   margin-right: 100px;
 }
+button {
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

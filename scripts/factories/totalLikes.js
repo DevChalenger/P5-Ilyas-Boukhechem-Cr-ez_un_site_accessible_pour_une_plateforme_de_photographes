@@ -1,8 +1,7 @@
 function totalLikes() {
   let getAllLikes = document.querySelectorAll(".numbers-likes");
-  let getButtonLikes = document.querySelectorAll(".heart-icon");
+  let getButtonLikes = document.querySelectorAll(".button-like");
   let getTotalLikes = document.getElementById("total-likes");
-  console.log(getButtonLikes);
   let total = 0;
   getAllLikes.forEach((number) => {
     total += parseFloat(number.innerHTML);
@@ -16,10 +15,11 @@ function totalLikes() {
       if (buttonLikes.classList.contains("liked")) {
         getAllLikes[i].textContent++;
         getTotalLikes.textContent++;
-        console.log(getAllLikes[i]);
+        buttonLikes.setAttribute("aria-pressed", "true");
       } else {
         getAllLikes[i].textContent--;
         getTotalLikes.textContent--;
+        buttonLikes.setAttribute("aria-pressed", "false");
       }
     });
   }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
@@ -22,8 +23,8 @@
   <body>
     <main id="main">
       <header>
-        <a href="./index.html">
-          <img src="assets/images/logo.png" class="logo"
+        <a href="./index.html" aria-label="home page">
+          <img src="assets/images/logo.png" class="logo" alt="logo picture"
         /></a>
       </header>
       <section class="photograph-header" id="contact-section">
@@ -43,7 +44,9 @@
           <div class="modal">
             <header>
               <h2>Contactez-moi <span id="contact-name"></span></h2>
-              <img src="assets/icons/close.svg" onclick="closeModal()" />
+              <button onclick="closeModal()" aria-label="close modal">
+                <img src="assets/icons/close.svg" alt="close modal image" />
+              </button>
             </header>
             <form>
               <div>
@@ -63,10 +66,7 @@
                 <input id="message" class="message-input" />
               </div>
               <div>
-                <button
-                  class="contact_button"
-                  onclick="(event.preventDefault())"
-                >
+                <button class="contact_button" onclick="event.preventDefault()">
                   Envoyer
                 </button>
               </div>
@@ -77,22 +77,40 @@
       <section id="select-section" class="select-section">
         <p class="sort-text">Trier par</p>
         <div class="select-dropdown" id="select-dropdown">
-          <div
-            value="popularity"
+          <a
+            href="#"
             id="sort-by-popularity"
             class="sort-block sort"
+            aria-label="sort-by-popularity"
+            >Popularité</a
           >
-            Popularité
-          </div>
           <div class="separate-block"></div>
-          <div value="date" id="sort-by-date" class="sort-block sort">Date</div>
+          <a
+            href="#"
+            id="sort-by-date"
+            class="sort-block sort"
+            aria-label="sort-by-date"
+            >Date</a
+          >
           <div class="separate-block"></div>
-          <div value="title" id="sort-by-title" class="sort-block sort">
-            Titre
-          </div>
-          <div id="toggle-list" class="toggle-list">
-            <i class="fa-solid fa-angle-up" id="toggle-open"></i>
-            <i class="fa-solid fa-angle-down" id="toggle-close"></i>
+          <a
+            href="#"
+            id="sort-by-title"
+            class="sort-block sort"
+            aria-label="sort-by-title"
+            >Titre</a
+          >
+          <div
+            id="toggle-list"
+            class="toggle-list"
+            aria-label="close toggle sort list"
+          >
+            <button id="toggle-open" aria-label="open toggle sort list">
+              <i class="fa-solid fa-angle-up"></i>
+            </button>
+            <button id="toggle-close" aria-label="close toggle sort list">
+              <i class="fa-solid fa-angle-down"></i>
+            </button>
           </div>
         </div>
       </section>
@@ -117,9 +135,7 @@
     <script src="./scripts/utils/sort.js"></script>
     <script src="./scripts/factories/media.js"></script>
     <script src="./scripts/factories/lightbox.js"></script>
-    <script src="./scripts/utils/Lightbox.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
-
     <script src="./scripts/pages/photographer.js"></script>
   </body>
 </html>

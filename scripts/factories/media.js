@@ -25,22 +25,26 @@ function mediadFactory(data) {
     titles.appendChild(a);
 
     /////
-    const likeBlock = document.createElement("button");
+    const likeBlock = document.createElement("div");
     const likesCounter = document.createElement("span");
+    const likeButton = document.createElement("button");
     const likesIcon = document.createElement("i");
-    likeBlock.setAttribute("href", "#");
+    likeButton.classList.add("button-like");
+
     likesCounter.textContent = likes;
     likesCounter.classList.add("numbers-likes");
 
     likesIcon.classList.add("fa-solid", "fa-heart", "heart-icon");
-    likesIcon.setAttribute("value", likes);
+
+    likesIcon.style.fontSize = "1.5em";
     likeBlock.style.display = "flex";
     likeBlock.style.alignItems = "center";
     likeBlock.style.justifyContent = "space-between";
     likeBlock.style.fontSize = "1.2em";
     likeBlock.appendChild(likesCounter);
 
-    likeBlock.appendChild(likesIcon);
+    likeBlock.appendChild(likeButton);
+    likeButton.appendChild(likesIcon);
     /////
     if (video != undefined) {
       const blockVideo = document.createElement("a");
@@ -64,6 +68,7 @@ function mediadFactory(data) {
       blockImages.setAttribute("href", "#");
       blockImages.classList.add("lightbox-link");
       images.setAttribute("src", picture);
+      images.setAttribute("alt", title + " picture");
       images.classList.add("current-picture");
       /* images.setAttribute("data-id", 0); */
       images.style.width = "350px";

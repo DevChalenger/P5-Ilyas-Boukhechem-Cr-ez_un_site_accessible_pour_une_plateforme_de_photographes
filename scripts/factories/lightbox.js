@@ -12,6 +12,7 @@ function lightboxFactory(data) {
     titles.textContent = title;
     const linkMedia = document.querySelectorAll(".lightbox-link");
     const picture = document.createElement("img");
+    picture.setAttribute("alt", title + " picture");
     picture.classList.add("media-lightbox");
     const videos = document.createElement("video");
     videos.classList.add("media-lightbox");
