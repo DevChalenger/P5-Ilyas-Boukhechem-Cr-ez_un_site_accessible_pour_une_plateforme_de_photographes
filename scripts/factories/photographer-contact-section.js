@@ -7,6 +7,8 @@ function photographerContactFactory(data) {
     const getSection = document.getElementById("contact-section");
     ////
     const namePhotographer = document.createElement("h1");
+    const selectDivText = document.createElement("a");
+    selectDivText.setAttribute("href", "#");
     namePhotographer.textContent = name;
     ////
     const resume = document.createElement("p");
@@ -33,7 +35,8 @@ function photographerContactFactory(data) {
     divText.appendChild(location);
     divText.appendChild(resume);
     /////
-    getSection.appendChild(divText);
+    selectDivText.appendChild(divText);
+    getSection.appendChild(selectDivText);
     getSection.appendChild(button);
     getSection.appendChild(avatar);
     return getSection;

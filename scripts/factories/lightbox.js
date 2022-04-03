@@ -22,7 +22,7 @@ function lightboxFactory(data) {
     function displayMedia() {
       if (video != undefined) {
         videos.setAttribute("src", records);
-
+        videos.autoplay = true;
         article.appendChild(videos);
         article.appendChild(a);
       }
@@ -79,7 +79,6 @@ function lightboxFactory(data) {
           main.ariaHidden = "true";
           main.style.display = "none";
           displayMedia();
-          videos.play();
         }
         displayLightbox();
         function previousPicture() {
@@ -104,6 +103,7 @@ function lightboxFactory(data) {
             i--;
           }
           getAllArticle[i].classList.add("displayed-block");
+
           displayMedia();
         }
         function nextPicture() {
@@ -129,6 +129,7 @@ function lightboxFactory(data) {
             previousButton.removeAttribute("role");
             i++;
           }
+
           getAllArticle[i].classList.add("displayed-block");
           displayMedia();
         }
