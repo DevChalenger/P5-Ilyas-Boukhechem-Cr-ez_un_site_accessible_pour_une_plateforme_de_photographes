@@ -4,11 +4,13 @@ function lightboxFactory(data) {
   const records = `assets/photographers/media/${video}`;
   const previousButton = document.getElementById("btn-previous");
   const nextButton = document.getElementById("btn-next");
-
   function getLightboxDOM() {
     const article = document.createElement("article");
     article.classList.add("lightbox-container");
     const titles = document.createElement("h2");
+    const a = document.createElement("a");
+    a.setAttribute("href", "#");
+    a.appendChild(titles);
     titles.textContent = title;
     const linkMedia = document.querySelectorAll(".lightbox-link");
     const picture = document.createElement("img");
@@ -20,13 +22,14 @@ function lightboxFactory(data) {
     function displayMedia() {
       if (video != undefined) {
         videos.setAttribute("src", records);
+
         article.appendChild(videos);
-        article.appendChild(titles);
+        article.appendChild(a);
       }
       if (image != undefined) {
         picture.setAttribute("src", pictures);
         article.appendChild(picture);
-        article.appendChild(titles);
+        article.appendChild(a);
       }
     }
     displayMedia();
@@ -61,6 +64,10 @@ function lightboxFactory(data) {
           previousButton.removeEventListener("click", previousPicture);
           nextButton.removeEventListener("click", nextPicture);
           window.removeEventListener("keydown", keyPress);
+          nextButton.removeAttribute("aria-valuetext");
+          nextButton.removeAttribute("role");
+          previousButton.removeAttribute("aria-valuetext");
+          previousButton.removeAttribute("role");
         }
         if ((getAllArticle[i] = selected)) {
           getAllArticle[i].classList.add("displayed-block");
@@ -71,8 +78,8 @@ function lightboxFactory(data) {
           lightbox.style.display = "block";
           main.ariaHidden = "true";
           main.style.display = "none";
-
           displayMedia();
+          videos.play();
         }
         displayLightbox();
         function previousPicture() {
@@ -83,11 +90,19 @@ function lightboxFactory(data) {
             });
           }
           if (i < 1) {
+            previousButton.setAttribute("role", "alert");
+            previousButton.ariaValueText =
+              "il n'y a plus d'images avant celle-ci";
+            nextButton.removeAttribute("aria-valuetext");
+            nextButton.removeAttribute("role");
             i = 0;
           } else {
+            nextButton.removeAttribute("aria-valuetext");
+            nextButton.removeAttribute("role");
+            previousButton.removeAttribute("aria-valuetext");
+            previousButton.removeAttribute("role");
             i--;
           }
-          console.log(i);
           getAllArticle[i].classList.add("displayed-block");
           displayMedia();
         }
@@ -103,7 +118,15 @@ function lightboxFactory(data) {
           }
           if (i >= getDataLightbox.length - 1) {
             i = getDataLightbox.length - 1;
+            nextButton.setAttribute("role", "alert");
+            nextButton.ariaValueText = "il n'y a plus d'images après celle-ci";
+            previousButton.removeAttribute("aria-valuetext");
+            previousButton.removeAttribute("role");
           } else {
+            nextButton.removeAttribute("aria-valuetext");
+            nextButton.removeAttribute("role");
+            previousButton.removeAttribute("aria-valuetext");
+            previousButton.removeAttribute("role");
             i++;
           }
           getAllArticle[i].classList.add("displayed-block");

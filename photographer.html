@@ -30,11 +30,19 @@
       <section class="photograph-header" id="contact-section">
         <div class="likes-block">
           <div class="total-likes-block">
-            <span id="total-likes"></span>
+            <a
+              id="total-likes"
+              href="#"
+              onclick="event =>{event.preventDefault()}"
+            ></a>
             <i class="fa-solid fa-heart"></i>
           </div>
           <div class="salary-block" id="salary-block">
-            <span id="salary-content"></span>
+            <a
+              id="salary-content"
+              href="#"
+              onclick="event =>{event.preventDefault()}"
+            ></a>
           </div>
         </div>
       </section>
@@ -44,7 +52,10 @@
           <div class="modal">
             <header>
               <h2>Contactez-moi <span id="contact-name"></span></h2>
-              <button onclick="closeModal()" aria-label="close modal">
+              <button
+                onclick="closeModal()"
+                aria-label="bouton pour fermer le modal"
+              >
                 <img src="assets/icons/close.svg" alt="close modal image" />
               </button>
             </header>
@@ -66,7 +77,10 @@
                 <input id="message" class="message-input" />
               </div>
               <div>
-                <button class="contact_button" onclick="event.preventDefault()">
+                <button
+                  class="contact_button"
+                  onclick="event =>{event.preventDefault()}"
+                >
                   Envoyer
                 </button>
               </div>
@@ -118,13 +132,25 @@
       <section id="media-section" class="media-section"></section>
     </main>
     <section id="lightbox-section" class="lightbox-section">
-      <button class="close-lightbox btn" id="close-lightbox">
+      <button
+        class="close-lightbox btn"
+        id="close-lightbox"
+        aria-label="bouton pour fermer la lightbox"
+      >
         <i class="fa fa-close"></i>
       </button>
-      <button class="previous-lightbox btn" id="btn-previous">
+      <button
+        class="previous-lightbox btn"
+        id="btn-previous"
+        aria-label="bouton précédent pour la lightbox"
+      >
         <i class="fa-solid fa-angle-left"></i>
       </button>
-      <button class="next-lightbox btn" id="btn-next">
+      <button
+        class="next-lightbox btn"
+        id="btn-next"
+        aria-label="bouton suivant pour la lightbox"
+      >
         <i class="fa-solid fa-angle-right"></i>
       </button>
       <div class="picture-container" id="picture-container"></div>

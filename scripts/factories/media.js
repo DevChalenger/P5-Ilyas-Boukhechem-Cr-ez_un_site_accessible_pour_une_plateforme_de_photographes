@@ -30,7 +30,7 @@ function mediadFactory(data) {
     const likeButton = document.createElement("button");
     const likesIcon = document.createElement("i");
     likeButton.classList.add("button-like");
-    likeButton.ariaLabel = `button like for '${title}' image`;
+    likeButton.ariaLabel = `button de like pour l'image '${title}'`;
     likesCounter.textContent = likes;
     likesCounter.classList.add("numbers-likes");
 
@@ -49,6 +49,8 @@ function mediadFactory(data) {
     if (video != undefined) {
       const blockVideo = document.createElement("a");
       const videos = document.createElement("video");
+      const description = document.createElement("p");
+      description.textContent = title + "for video";
       blockVideo.setAttribute("href", "#");
       blockVideo.classList.add("lightbox-link");
       videos.classList.add("current-picture");
@@ -61,6 +63,7 @@ function mediadFactory(data) {
       videos.style.cursor = "pointer";
       article.appendChild(blockVideo);
       blockVideo.appendChild(videos);
+      videos.appendChild(description);
     }
     /////
     if (image != undefined) {
