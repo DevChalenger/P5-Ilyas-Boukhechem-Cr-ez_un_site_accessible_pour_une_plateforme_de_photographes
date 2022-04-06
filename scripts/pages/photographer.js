@@ -1,10 +1,25 @@
 async function getMediasById() {
-  const media = getDataMedia();
+  // Seulement sur un serveur pas possible en local car le navigateur autorise que les serveurs http ou https
+
+  async function getDataTestMedia() {
+    try {
+      const responseApiMedia = await fetch(`data/photographers.json`);
+      if (responseApiMedia.ok) {
+        const elementsMedia = await responseApiMedia.json();
+        return elementsMedia.media;
+      }
+    } catch (errArticle) {
+      alert("Une erreur est survenu : désolé pour ce contre-temps ");
+    }
+  }
+
+  const media = await getDataTestMedia();
+
   const photographers = getDataPhotographer();
   let urlChecking = new URLSearchParams(window.location.search);
   const getId = urlChecking.get("id");
   const mediaById = media.filter((data) => data.photographerId == getId);
-  const photographerById = photographers.filter((data) => {
+  photographers.filter((data) => {
     if (data.id == getId) {
       photographerContactFactory(data);
     }

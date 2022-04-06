@@ -8,7 +8,7 @@ function photographerFactory(data) {
     //Link//
     const link = document.createElement("a");
     link.setAttribute("href", "photographer.html?id=" + id);
-    link.setAttribute("aria-label", `Link to ${name} personal page`);
+
     const blockLink = document.createElement("div");
     blockLink.style.display = "flex";
     blockLink.style.flexDirection = "column";
@@ -28,15 +28,23 @@ function photographerFactory(data) {
     const citiesAndCountrie = document.createElement("p");
     citiesAndCountrie.textContent = city + ", " + country;
     citiesAndCountrie.classList.add("citiesAndCountries");
+
     //Summary Elements//
     const summary = document.createElement("p");
     summary.textContent = tagline;
     summary.classList.add("summary");
+
     //Prices Elements//
     const prices = document.createElement("p");
     prices.textContent = price + "€/jour";
     prices.classList.add("prices");
     //child Elements//
+    link.setAttribute(
+      "aria-label",
+      `Link to ${name} personal page
+       ${citiesAndCountrie.textContent} 
+       ${tagline} ${price + "€"} par jour`
+    );
     article.appendChild(link);
     link.appendChild(blockLink);
     blockLink.appendChild(avatar);
@@ -44,6 +52,7 @@ function photographerFactory(data) {
     article.appendChild(citiesAndCountrie);
     article.appendChild(summary);
     article.appendChild(prices);
+
     return article;
   }
   return { name, picture, price, tagline, city, country, id, getUserCardDOM };
