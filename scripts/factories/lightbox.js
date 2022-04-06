@@ -1,10 +1,14 @@
-function lightboxFactory(data) {
-  const { title, image, video } = data;
-  const pictures = `assets/photographers/media/${image}`;
-  const records = `assets/photographers/media/${video}`;
-  const previousButton = document.getElementById("btn-previous");
-  const nextButton = document.getElementById("btn-next");
-  function getLightboxDOM() {
+class lightboxFactory {
+  constructor(data) {
+    return this.getLightboxDOM(data);
+  }
+  getLightboxDOM(data) {
+    const { title, image, video } = data;
+    console.log(title);
+    const pictures = `assets/photographers/media/${image}`;
+    const records = `assets/photographers/media/${video}`;
+    const previousButton = document.getElementById("btn-previous");
+    const nextButton = document.getElementById("btn-next");
     const article = document.createElement("article");
     article.classList.add("lightbox-container");
     const titles = document.createElement("h2");
@@ -37,6 +41,7 @@ function lightboxFactory(data) {
     for (let i = 0; i < getAllLinkPicture.length; i++) {
       const element = getAllLinkPicture[i];
       element.setAttribute("data-id", i);
+      article.setAttribute("data-id", i);
     }
     for (let i = 0; i < linkMedia.length; i++) {
       linkMedia[i].addEventListener("click", (event) => {
@@ -51,6 +56,8 @@ function lightboxFactory(data) {
             previousPicture();
           } else if (e.keyCode === 39) {
             nextPicture();
+          } else if (e.keyCode === 27) {
+            closeLightbox();
           }
         }
         function closeLightbox() {
@@ -64,20 +71,18 @@ function lightboxFactory(data) {
           previousButton.removeEventListener("click", previousPicture);
           nextButton.removeEventListener("click", nextPicture);
           window.removeEventListener("keydown", keyPress);
-          nextButton.removeAttribute("aria-valuetext");
-          nextButton.removeAttribute("role");
-          previousButton.removeAttribute("aria-valuetext");
-          previousButton.removeAttribute("role");
         }
-        if ((getAllArticle[i] = selected)) {
-          getAllArticle[i].classList.add("displayed-block");
-        } else {
-          article.classList.remove("displayed-block");
-        }
+
         function displayLightbox() {
           lightbox.style.display = "block";
           main.ariaHidden = "true";
           main.style.display = "none";
+          if (selected.getAttribute("data-id")) {
+            getAllArticle[i].classList.add("displayed-block");
+          } else {
+            article.classList.remove("displayed-block");
+          }
+          console.log(getAllArticle[i]);
           displayMedia();
         }
         displayLightbox();
@@ -89,17 +94,8 @@ function lightboxFactory(data) {
             });
           }
           if (i < 1) {
-            previousButton.setAttribute("role", "alert");
-            previousButton.ariaValueText =
-              "il n'y a plus d'images avant celle-ci";
-            nextButton.removeAttribute("aria-valuetext");
-            nextButton.removeAttribute("role");
-            i = 0;
+            i = getDataLightbox.length - 1;
           } else {
-            nextButton.removeAttribute("aria-valuetext");
-            nextButton.removeAttribute("role");
-            previousButton.removeAttribute("aria-valuetext");
-            previousButton.removeAttribute("role");
             i--;
           }
           getAllArticle[i].classList.add("displayed-block");
@@ -117,19 +113,10 @@ function lightboxFactory(data) {
             });
           }
           if (i >= getDataLightbox.length - 1) {
-            i = getDataLightbox.length - 1;
-            nextButton.setAttribute("role", "alert");
-            nextButton.ariaValueText = "il n'y a plus d'images après celle-ci";
-            previousButton.removeAttribute("aria-valuetext");
-            previousButton.removeAttribute("role");
+            i = 0;
           } else {
-            nextButton.removeAttribute("aria-valuetext");
-            nextButton.removeAttribute("role");
-            previousButton.removeAttribute("aria-valuetext");
-            previousButton.removeAttribute("role");
             i++;
           }
-
           getAllArticle[i].classList.add("displayed-block");
           displayMedia();
         }
@@ -143,5 +130,4 @@ function lightboxFactory(data) {
     }
     return article;
   }
-  return { getLightboxDOM };
 }

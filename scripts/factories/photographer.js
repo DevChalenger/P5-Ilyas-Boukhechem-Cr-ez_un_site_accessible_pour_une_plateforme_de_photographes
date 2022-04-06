@@ -1,9 +1,12 @@
-function photographerFactory(data) {
-  const { name, portrait, price, tagline, city, country, id } = data;
+class photographerFactory {
+  constructor(data) {
+    return this.getUserCardDOM(data);
+  }
 
-  const picture = `assets/photographers/avatar/${portrait}`;
+  getUserCardDOM(data) {
+    const { name, portrait, price, tagline, city, country, id } = data;
 
-  function getUserCardDOM() {
+    const picture = `assets/photographers/avatar/${portrait}`;
     const article = document.createElement("article");
     //Link//
     const link = document.createElement("a");
@@ -55,5 +58,4 @@ function photographerFactory(data) {
 
     return article;
   }
-  return { name, picture, price, tagline, city, country, id, getUserCardDOM };
 }
