@@ -1,4 +1,4 @@
-async function getDataTestMedia() {
+async function getDataMedia() {
   try {
     const responseApiMedia = await fetch(`data/photographers.json`);
     if (responseApiMedia.ok) {

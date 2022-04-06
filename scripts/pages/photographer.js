@@ -1,5 +1,5 @@
 async function getMediasById() {
-  const media = await getDataTestMedia();
+  const media = await getDataMedia();
   const photographers = await getDataPhotographer();
   let urlChecking = new URLSearchParams(window.location.search);
   const getId = urlChecking.get("id");
