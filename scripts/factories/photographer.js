@@ -11,7 +11,12 @@ class photographerFactory {
     //Link//
     const link = document.createElement("a");
     link.setAttribute("href", "photographer.html?id=" + id);
-
+    link.setAttribute(
+      "aria-label",
+      `Link to ${name} personal page
+       ${citiesAndCountrie.textContent} 
+       ${tagline} ${price + "€"} par jour`
+    );
     const blockLink = document.createElement("div");
     blockLink.style.display = "flex";
     blockLink.style.flexDirection = "column";
@@ -42,12 +47,7 @@ class photographerFactory {
     prices.textContent = price + "€/jour";
     prices.classList.add("prices");
     //child Elements//
-    link.setAttribute(
-      "aria-label",
-      `Link to ${name} personal page
-       ${citiesAndCountrie.textContent} 
-       ${tagline} ${price + "€"} par jour`
-    );
+
     article.appendChild(link);
     link.appendChild(blockLink);
     blockLink.appendChild(avatar);

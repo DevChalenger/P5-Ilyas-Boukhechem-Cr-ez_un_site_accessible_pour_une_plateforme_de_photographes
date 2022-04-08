@@ -4,7 +4,6 @@ class lightboxFactory {
   }
   getLightboxDOM(data) {
     const { title, image, video } = data;
-    console.log(title);
     const pictures = `assets/photographers/media/${image}`;
     const records = `assets/photographers/media/${video}`;
     const previousButton = document.getElementById("btn-previous");

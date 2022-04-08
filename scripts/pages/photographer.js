@@ -19,7 +19,7 @@ async function displayPhotorgapher(medias) {
   sortCategories(medias);
   medias.forEach((media) => {
     ////
-    const mediaModel = new mediadFactory(media);
+    const mediaModel = new mediaFactory(media);
     mediaSection.appendChild(mediaModel);
     ////
     const lightboxModel = new lightboxFactory(media);
@@ -28,7 +28,7 @@ async function displayPhotorgapher(medias) {
   totalLikes();
 }
 async function initMedia() {
-  // Récupère les datas des photographes
+  // Récupère les media du photographe
   const { medias } = await getMediasById();
 
   displayPhotorgapher(medias);
