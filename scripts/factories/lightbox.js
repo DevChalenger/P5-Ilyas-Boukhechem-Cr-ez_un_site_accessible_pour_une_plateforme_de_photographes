@@ -1,11 +1,29 @@
+/**
+ * Represents the of the lightbox.
+ * @constructor
+ * @param {object} data - The data of the object
+ * @param {string} data.video - The video of the data
+ * @param {string} data.image - The image of the data
+ */
 class lightboxFactory {
   constructor(data) {
-    return this.getLightboxDOM(data);
+    if (data.video) {
+      return new getVideoLightboxDom(data, new getLightboxDOM(data));
+    } else if (data.image) {
+      return new getImageLightboxDom(data, new getLightboxDOM(data));
+    } else {
+      throw "error we have not found the data";
+    }
   }
-  getLightboxDOM(data) {
-    const { title, image, video } = data;
-    const pictures = `assets/photographers/media/${image}`;
-    const records = `assets/photographers/media/${video}`;
+}
+/**
+ * Represents the data of the lightbox.
+ * @constructor
+ * @param {object} data - The data of the object
+ */
+class getLightboxDOM {
+  constructor(data) {
+    const { title } = data;
     const previousButton = document.getElementById("btn-previous");
     const nextButton = document.getElementById("btn-next");
     const article = document.createElement("article");
@@ -15,27 +33,8 @@ class lightboxFactory {
     a.setAttribute("href", "#");
     a.appendChild(titles);
     titles.textContent = title;
-    const linkMedia = document.querySelectorAll(".lightbox-link");
-    const picture = document.createElement("img");
-    picture.setAttribute("alt", title + " picture");
-    picture.classList.add("media-lightbox");
-    const videos = document.createElement("video");
-    videos.classList.add("media-lightbox");
 
-    function displayMedia() {
-      if (video != undefined) {
-        videos.setAttribute("src", records);
-        videos.autoplay = true;
-        article.appendChild(videos);
-        article.appendChild(a);
-      }
-      if (image != undefined) {
-        picture.setAttribute("src", pictures);
-        article.appendChild(picture);
-        article.appendChild(a);
-      }
-    }
-    displayMedia();
+    const linkMedia = document.querySelectorAll(".lightbox-link");
     let getAllLinkPicture = document.querySelectorAll(".current-picture");
     for (let i = 0; i < getAllLinkPicture.length; i++) {
       const element = getAllLinkPicture[i];
@@ -81,8 +80,6 @@ class lightboxFactory {
           } else {
             article.classList.remove("displayed-block");
           }
-          console.log(getAllArticle[i]);
-          displayMedia();
         }
         displayLightbox();
         function previousPicture() {
@@ -98,8 +95,6 @@ class lightboxFactory {
             i--;
           }
           getAllArticle[i].classList.add("displayed-block");
-
-          displayMedia();
         }
         function nextPicture() {
           getAllArticle[i].classList.remove("displayed-block");
@@ -117,7 +112,6 @@ class lightboxFactory {
             i++;
           }
           getAllArticle[i].classList.add("displayed-block");
-          displayMedia();
         }
         const getCloseLightbox = document.getElementById("close-lightbox");
 
@@ -127,6 +121,48 @@ class lightboxFactory {
         nextButton.addEventListener("click", nextPicture);
       });
     }
+    article.appendChild(a);
+    return article;
+  }
+}
+/**
+ * Represents the data of the lightbox.
+ * @constructor
+ * @param {object} data - The data of the object
+ * @param {string} title - The title of the image.
+ * @param {string} image - The image of data.
+ */
+class getImageLightboxDom {
+  constructor(data, article) {
+    const { title, image } = data;
+    const pictures = `assets/photographers/media/${image}`;
+    const picture = document.createElement("img");
+    picture.setAttribute("alt", title + " picture");
+    picture.classList.add("media-lightbox");
+    picture.setAttribute("src", pictures);
+    article.appendChild(picture);
+
+    return article;
+  }
+}
+/**
+ * Represents the data of the lightbox.
+ * @constructor
+ * @param {object} data
+ * @param {string} video - The video of data.
+ */
+class getVideoLightboxDom {
+  constructor(data, article) {
+    const { video } = data;
+    const records = `assets/photographers/media/${video}`;
+    const videos = document.createElement("video");
+    videos.classList.add("media-lightbox");
+
+    videos.setAttribute("controls", "");
+    const source = document.createElement("source");
+    source.src = records;
+    videos.appendChild(source);
+    article.appendChild(videos);
     return article;
   }
 }

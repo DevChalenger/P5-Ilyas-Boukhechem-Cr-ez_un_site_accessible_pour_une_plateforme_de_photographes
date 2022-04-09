@@ -3,6 +3,9 @@ body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
 }
+* {
+  box-sizing: border-box;
+}
 $Primary-color: #901c1c;
 $Second-color: #d3573c;
 $Third-color: #525252;

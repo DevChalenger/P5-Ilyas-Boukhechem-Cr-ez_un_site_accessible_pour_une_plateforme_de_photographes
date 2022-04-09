@@ -1,9 +1,22 @@
 class photographerFactory {
   constructor(data) {
-    return this.getUserCardDOM(data);
+    return new getUserCardDOM(data);
   }
-
-  getUserCardDOM(data) {
+}
+/**
+ * Represents the data of the photograph.
+ * @constructor
+ * @param {object} data - the data of the object
+ * @param {string} video - The video of data.
+ * @param {string} portrait - The image of data.
+ * @param {number} price - The price of data.
+ * @param {string} tagline - The tagline of data.
+ * @param {string} city - The city of data.
+ * @param {string} country - The country of data.
+ * @param {id} id - The id of data.
+ */
+class getUserCardDOM {
+  constructor(data) {
     const { name, portrait, price, tagline, city, country, id } = data;
 
     const picture = `assets/photographers/avatar/${portrait}`;
@@ -11,12 +24,7 @@ class photographerFactory {
     //Link//
     const link = document.createElement("a");
     link.setAttribute("href", "photographer.html?id=" + id);
-    link.setAttribute(
-      "aria-label",
-      `Link to ${name} personal page
-       ${citiesAndCountrie.textContent} 
-       ${tagline} ${price + "€"} par jour`
-    );
+
     const blockLink = document.createElement("div");
     blockLink.style.display = "flex";
     blockLink.style.flexDirection = "column";
@@ -47,7 +55,12 @@ class photographerFactory {
     prices.textContent = price + "€/jour";
     prices.classList.add("prices");
     //child Elements//
-
+    link.setAttribute(
+      "aria-label",
+      `Link to ${name} personal page
+     ${citiesAndCountrie.textContent} 
+     ${tagline} ${price + "€"} par jour`
+    );
     article.appendChild(link);
     link.appendChild(blockLink);
     blockLink.appendChild(avatar);

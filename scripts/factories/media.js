@@ -1,26 +1,51 @@
 class mediaFactory {
   constructor(data) {
+    if (data.video) {
+      return new getVideoDOM(data, new buildMediaDom(data));
+    } else if (data.image) {
+      return new getImageDOM(data, new buildMediaDom(data));
+    }
+  }
+}
+/**
+ * Represents the data.
+ * @constructor
+ * @param {object} data - The data of the object
+ * @param {string} title - The title of the data.
+ * @param {number} likes - The number of likes from the data.
+ */
+class buildMediaDom {
+  constructor(data) {
     const { title, likes } = data;
+
+    //create article for the media section//
     const article = document.createElement("article");
     article.style.width = "350px";
+
+    article.style.display = "flex";
+    article.style.flexDirection = "column-reverse";
+
     const divText = document.createElement("div");
+    //create block under the picture//
+    divText.style.height = "80px";
     divText.style.color = "#901c1c";
     divText.style.display = "flex";
-    divText.style.alignItems = "center";
+    divText.style.alignItems = "start";
     divText.style.justifyContent = "space-between";
-    /////
+    divText.style.marginTop = "0.5em";
+    //Create title of picture///
     const titles = document.createElement("h2");
+    titles.style.margin = "0";
     const a = document.createElement("a");
     a.classList = "title-media";
     a.textContent = title;
     a.setAttribute("href", "#");
     a.addEventListener("click", (event) => {
       event.preventDefault();
-      displayLightbox();
     });
-    a.style.overflowWrap = "anywhere";
-    titles.appendChild(a);
-    /////
+    a.style.overflowWrap = "break-word";
+
+    //create like block//
     const likeBlock = document.createElement("div");
     const likesCounter = document.createElement("span");
     const likeButton = document.createElement("button");
@@ -35,21 +60,26 @@ class mediaFactory {
     likeBlock.style.alignItems = "center";
     likeBlock.style.justifyContent = "space-between";
     likeBlock.style.fontSize = "1.2em";
+    //Add child element//
+    titles.appendChild(a);
     likeBlock.appendChild(likesCounter);
     likeBlock.appendChild(likeButton);
     likeButton.appendChild(likesIcon);
 
-    if (data.video) {
-      new getVideoDOM(data, article);
-    } else if (data.image) {
-      new getImageDOM(data, article);
-    }
-    article.appendChild(divText);
     divText.appendChild(titles);
     divText.appendChild(likeBlock);
+    article.appendChild(divText);
+    divText.style.order = 1;
     return article;
   }
 }
+/**
+ * Represents the data.
+ * @constructor
+ * @param {object} data - The data of the object
+ * @param {string} title - The title of the data.
+ * @param {string} image - The image of the data.
+ */
 class getImageDOM {
   constructor(data, article) {
     const { title, image } = data;
@@ -66,13 +96,22 @@ class getImageDOM {
     images.style.objectFit = "cover";
     images.style.borderRadius = "0.3em";
     images.style.cursor = "pointer";
+    //Add child element//
     article.appendChild(blockImages);
     blockImages.appendChild(images);
+    blockImages.style.order = 2;
+    return article;
   }
 }
+/**
+ * Represents the data.
+ * @constructor
+ * @param {object} data - The data of the object
+ * @param {string} title - The title of the data.
+ * @param {string} video - The video of the data.
+ */
 class getVideoDOM {
   constructor(data, article) {
-    console.log(article);
     const { title, video } = data;
     const record = `assets/photographers/media/${video}`;
     const blockVideo = document.createElement("a");
@@ -88,10 +127,12 @@ class getVideoDOM {
     videos.style.height = "300px";
     videos.style.objectFit = "cover";
     videos.style.borderRadius = "0.3em";
-    videos.style.cursor = "pointer";
-    article.appendChild(blockVideo);
     blockVideo.appendChild(videos);
     videos.appendChild(description);
+    //Add child element//
+    videos.style.cursor = "pointer";
+    article.appendChild(blockVideo);
+    blockVideo.style.order = 2;
     return article;
   }
 }

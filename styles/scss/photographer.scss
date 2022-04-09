@@ -263,7 +263,8 @@ form {
     }
   }
   .displayed-block {
-    display: block;
+    display: flex;
+    flex-direction: column-reverse;
   }
   .next-lightbox {
     right: 10%;

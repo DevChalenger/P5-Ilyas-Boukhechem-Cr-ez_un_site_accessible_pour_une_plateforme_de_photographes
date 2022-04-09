@@ -16,15 +16,16 @@ async function getMediasById() {
 async function displayPhotorgapher(medias) {
   const mediaSection = document.querySelector("#media-section");
   const lightboxContainer = document.getElementById("picture-container");
-  sortCategories(medias);
+
   medias.forEach((media) => {
-    ////
+    //Construct media Dom//
     const mediaModel = new mediaFactory(media);
     mediaSection.appendChild(mediaModel);
-    ////
+    //Construct lightbox Dom//
     const lightboxModel = new lightboxFactory(media);
     lightboxContainer.appendChild(lightboxModel);
   });
+  sortCategories(medias);
   totalLikes();
 }
 async function initMedia() {
