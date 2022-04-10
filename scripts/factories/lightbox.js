@@ -2,8 +2,8 @@
  * Represents the of the lightbox.
  * @constructor
  * @param {object} data - The data of the object
- * @param {string} data.video - The video of the data
- * @param {string} data.image - The image of the data
+ * @param {string} data.video - The video url of the data
+ * @param {string} data.image - The image url of the data
  */
 class lightboxFactory {
   constructor(data) {
@@ -20,6 +20,7 @@ class lightboxFactory {
  * Represents the data of the lightbox.
  * @constructor
  * @param {object} data - The data of the object
+ * @param {string} title - The title of the data
  */
 class getLightboxDOM {
   constructor(data) {
