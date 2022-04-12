@@ -32,7 +32,6 @@ class getLightboxDOM {
     const titles = document.createElement("h2");
     const a = document.createElement("a");
     a.setAttribute("href", "#");
-    a.appendChild(titles);
     titles.textContent = title;
 
     const linkMedia = document.querySelectorAll(".lightbox-link");
@@ -122,6 +121,8 @@ class getLightboxDOM {
         nextButton.addEventListener("click", nextPicture);
       });
     }
+    //Add child elements//
+    a.appendChild(titles);
     article.appendChild(a);
     return article;
   }

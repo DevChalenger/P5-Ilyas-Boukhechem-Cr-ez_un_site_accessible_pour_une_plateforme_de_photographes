@@ -4,6 +4,8 @@ class mediaFactory {
       return new getVideoDOM(data, new buildMediaDom(data));
     } else if (data.image) {
       return new getImageDOM(data, new buildMediaDom(data));
+    } else {
+      throw "error we have not found the data";
     }
   }
 }
