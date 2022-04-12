@@ -5,7 +5,7 @@ async function getDataMedia() {
       const elementsMedia = await responseApiMedia.json();
       return elementsMedia.media;
     }
-  } catch (errArticle) {
+  } catch (error) {
     alert("Une erreur est survenu : désolé pour ce contre-temps ");
   }
 }
@@ -17,7 +17,7 @@ async function getDataPhotographer() {
       const elementsPhotographer = await responseApiPhotographer.json();
       return elementsPhotographer.photographersData;
     }
-  } catch (errArticle) {
+  } catch (error) {
     alert("Une erreur est survenu : désolé pour ce contre-temps ");
   }
 }
