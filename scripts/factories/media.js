@@ -51,7 +51,7 @@ class buildMediaDom {
     const likeBlock = document.createElement("div");
     const likesCounter = document.createElement("span");
     const likeButton = document.createElement("button");
-    const likesIcon = document.createElement("i");
+    const likesIcon = document.createElement("span");
     likeButton.classList.add("button-like");
     likeButton.ariaLabel = `button de like pour l'image '${title}'`;
     likesCounter.textContent = likes;
