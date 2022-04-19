@@ -57,7 +57,7 @@ class buildMediaDom {
     likesCounter.textContent = likes;
     likesCounter.classList.add("numbers-likes");
     likesIcon.classList.add("fa-solid", "fa-heart", "heart-icon");
-    likesIcon.style.fontSize = "1.5em";
+
     likeBlock.style.display = "flex";
     likeBlock.style.alignItems = "center";
     likeBlock.style.justifyContent = "space-between";
@@ -88,21 +88,16 @@ class getImageDOM {
     const picture = `assets/photographers/media/${image}`;
     const blockImages = document.createElement("a");
     const images = document.createElement("img");
-    images.classList.add("media-images");
     blockImages.setAttribute("href", "#");
     blockImages.classList.add("lightbox-link");
     images.setAttribute("src", picture);
     images.setAttribute("alt", title + " image");
     images.classList.add("current-picture");
-    images.style.width = "350px";
-    images.style.height = "300px";
-    images.style.objectFit = "cover";
-    images.style.borderRadius = "0.3em";
-    images.style.cursor = "pointer";
+
     //Add child element//
     article.appendChild(blockImages);
     blockImages.appendChild(images);
-    blockImages.style.order = 2;
+
     return article;
   }
 }
@@ -126,16 +121,12 @@ class getVideoDOM {
     videos.classList.add("current-picture");
     videos.setAttribute("src", record);
     videos.ariaLabel = title + " video";
-    videos.style.width = "350px";
-    videos.style.height = "300px";
-    videos.style.objectFit = "cover";
-    videos.style.borderRadius = "0.3em";
     blockVideo.appendChild(videos);
     videos.appendChild(description);
     //Add child element//
     videos.style.cursor = "pointer";
     article.appendChild(blockVideo);
-    blockVideo.style.order = 2;
+
     return article;
   }
 }
