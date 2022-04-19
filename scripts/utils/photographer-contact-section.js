@@ -37,6 +37,7 @@ function photographerContactFactory(data) {
     ////
     const salary = document.getElementById("salary-content");
     salary.innerHTML = `${price} € / jour`;
+    salary.ariaLabel = `${price} € par jour`;
     ////
     const avatar = document.createElement("img");
     avatar.setAttribute("src", picture);

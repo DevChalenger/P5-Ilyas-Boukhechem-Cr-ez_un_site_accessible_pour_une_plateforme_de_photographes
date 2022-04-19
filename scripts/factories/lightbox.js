@@ -1,5 +1,5 @@
 /**
- * Represents the of the lightbox.
+ * Represents the data of the lightbox.
  * @constructor
  * @param {object} data - The data of the object
  * @param {string} data.video - The video url of the data
