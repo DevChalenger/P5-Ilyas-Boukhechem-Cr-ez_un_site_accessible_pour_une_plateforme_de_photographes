@@ -88,6 +88,7 @@ class getImageDOM {
     const picture = `assets/photographers/media/${image}`;
     const blockImages = document.createElement("a");
     const images = document.createElement("img");
+    images.classList.add("media-images");
     blockImages.setAttribute("href", "#");
     blockImages.classList.add("lightbox-link");
     images.setAttribute("src", picture);

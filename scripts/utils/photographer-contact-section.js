@@ -1,16 +1,17 @@
 function photographerContactFactory(data) {
   const { name, portrait, price, tagline, city, country } = data;
-  const form = document.querySelector("form");
+  const form = document.querySelector(".contact_button");
   form.addEventListener("click", (event) => {
     event.preventDefault();
     const firstName = document.getElementById("firstName");
     const name = document.getElementById("name");
     const email = document.getElementById("email");
     const message = document.getElementById("message");
-    console.log(firstName.value);
-    console.log(name.value);
-    console.log(email.value);
-    console.log(message.value);
+    console.log("prénom: " + firstName.value);
+    console.log("nom: " + name.value);
+    console.log("email: " + email.value);
+    console.log("message: " + message.value);
+    closeModal();
   });
   const picture = `assets/photographers/avatar/${portrait}`;
   document.getElementById("contact-name").textContent = name;
